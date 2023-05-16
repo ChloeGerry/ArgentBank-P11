@@ -1,5 +1,6 @@
 import Header from '../../components/layouts/Header';
 import styled from 'styled-components';
+import Title from '../../components/Title';
 
 const Main = styled.main`
   flex: 1;
@@ -17,20 +18,6 @@ const EditButton = styled.button`
   color: #fff;
   font-weight: bold;
   padding: 10px;
-`;
-
-const SectionTitle = styled.h2`
-  border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
 `;
 
 const AccountWrapper = styled.section`
@@ -109,7 +96,7 @@ const User = () => {
           </h1>
           <EditButton>Edit Name</EditButton>
         </MainHeader>
-        <SectionTitle>Accounts</SectionTitle>
+        <Title title="Accounts" />
         <AccountWrapper>
           <AccountContentWrapper>
             <AccountTitle>Argent Bank Checking (x8349)</AccountTitle>
