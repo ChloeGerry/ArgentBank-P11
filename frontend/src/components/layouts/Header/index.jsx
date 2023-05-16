@@ -30,7 +30,7 @@ const NavigationItemWrapper = styled(Link)`
   }
 `;
 
-const Header = () => {
+const Header = ({ login }) => {
   return (
     <header>
       <Navigation>
@@ -43,9 +43,20 @@ const Header = () => {
           </h1>
         </NavigationLogoWrapper>
         <div>
-          <NavigationItemWrapper to="/login">
-            <i className="fa fa-user-circle"></i> Sign In
-          </NavigationItemWrapper>
+          {login === 'false' ? (
+            <NavigationItemWrapper to="/login">
+              <i className="fa fa-user-circle"></i> Sign In
+            </NavigationItemWrapper>
+          ) : (
+            <>
+              <NavigationItemWrapper to="/users/:id">
+                <i className="fa fa-user-circle"></i> Tony
+              </NavigationItemWrapper>
+              <NavigationItemWrapper to="/">
+                <i className="fa fa-user-circle"></i> Sign Out
+              </NavigationItemWrapper>
+            </>
+          )}
         </div>
       </Navigation>
     </header>

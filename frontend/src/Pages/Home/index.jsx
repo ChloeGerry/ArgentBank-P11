@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Header from '../../components/layouts/Header';
 
 const Main = styled.main`
   flex: 1;
@@ -96,45 +97,52 @@ const FeaturesItemTitle = styled.h3`
 
 const Home = () => {
   return (
-    <Main>
-      <BankDescriptionWrapper>
-        <BankDescriptionContent>
-          <HomePageSectionTitle>Promoted Content</HomePageSectionTitle>
-          <BankDesciptionSubtitle>No fees.</BankDesciptionSubtitle>
-          <BankDesciptionSubtitle>No minimum deposit.</BankDesciptionSubtitle>
-          <BankDesciptionSubtitle>High interest rates.</BankDesciptionSubtitle>
-          <BankDescriptionText>
-            Open a savings account with Argent Bank today !
-          </BankDescriptionText>
-        </BankDescriptionContent>
-      </BankDescriptionWrapper>
-      <FeaturesWrapper>
-        <HomePageSectionTitle>Features</HomePageSectionTitle>
-        <FeaturesItemWrapper>
-          <FeaturesIcon src="/assets/icon-chat.png" alt="Chat Icon" />
-          <FeaturesItemTitle>You are our #1 priority</FeaturesItemTitle>
-          <p>
-            Need to talk to a representative? You can get in touch through our
-            24/7 chat or through a phone call in less than 5 minutes.
-          </p>
-        </FeaturesItemWrapper>
-        <FeaturesItemWrapper>
-          <FeaturesIcon src="/assets/icon-money.png" alt="Chat Icon" />
-          <FeaturesItemTitle>More savings means higher rates</FeaturesItemTitle>
-          <p>
-            The more you save with us, the higher your interest rate will be !
-          </p>
-        </FeaturesItemWrapper>
-        <FeaturesItemWrapper>
-          <FeaturesIcon src="/assets/icon-security.png" alt="Chat Icon" />
-          <FeaturesItemTitle>Security you can trust</FeaturesItemTitle>
-          <p>
-            We use top of the line encryption to make sure your data and money
-            is always safe.
-          </p>
-        </FeaturesItemWrapper>
-      </FeaturesWrapper>
-    </Main>
+    <>
+      <Header login="false" />
+      <Main>
+        <BankDescriptionWrapper>
+          <BankDescriptionContent>
+            <HomePageSectionTitle>Promoted Content</HomePageSectionTitle>
+            <BankDesciptionSubtitle>No fees.</BankDesciptionSubtitle>
+            <BankDesciptionSubtitle>No minimum deposit.</BankDesciptionSubtitle>
+            <BankDesciptionSubtitle>
+              High interest rates.
+            </BankDesciptionSubtitle>
+            <BankDescriptionText>
+              Open a savings account with Argent Bank today !
+            </BankDescriptionText>
+          </BankDescriptionContent>
+        </BankDescriptionWrapper>
+        <FeaturesWrapper>
+          <HomePageSectionTitle>Features</HomePageSectionTitle>
+          <FeaturesItemWrapper>
+            <FeaturesIcon src="/assets/icon-chat.png" alt="Chat Icon" />
+            <FeaturesItemTitle>You are our #1 priority</FeaturesItemTitle>
+            <p>
+              Need to talk to a representative? You can get in touch through our
+              24/7 chat or through a phone call in less than 5 minutes.
+            </p>
+          </FeaturesItemWrapper>
+          <FeaturesItemWrapper>
+            <FeaturesIcon src="/assets/icon-money.png" alt="Chat Icon" />
+            <FeaturesItemTitle>
+              More savings means higher rates
+            </FeaturesItemTitle>
+            <p>
+              The more you save with us, the higher your interest rate will be !
+            </p>
+          </FeaturesItemWrapper>
+          <FeaturesItemWrapper>
+            <FeaturesIcon src="/assets/icon-security.png" alt="Chat Icon" />
+            <FeaturesItemTitle>Security you can trust</FeaturesItemTitle>
+            <p>
+              We use top of the line encryption to make sure your data and money
+              is always safe.
+            </p>
+          </FeaturesItemWrapper>
+        </FeaturesWrapper>
+      </Main>
+    </>
   );
 };
 
