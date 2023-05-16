@@ -1,34 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
-const Navigation = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 20px;
-`;
-
-const NavigationLogoWrapper = styled(Link)`
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-`;
-
-const NavigationLogo = styled.img`
-  max-width: 100%;
-  width: 200px;
-`;
-
-const NavigationItemWrapper = styled(Link)`
-  text-decoration: none;
-  margin-right: 0.5rem;
-  color: #00bc77;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
 
 const Main = styled.main`
   flex: 1;
@@ -124,83 +94,47 @@ const FeaturesItemTitle = styled.h3`
   margin-bottom: 0.5rem;
 `;
 
-const Footer = styled.footer`
-  display: flex;
-  justify-content: center;
-  border-top: 2px solid #ccc;
-  padding: 2rem 0 1.5rem;
-`;
-
-const FooterText = styled.p`
-  margin: 0;
-  padding: 0;
-`;
-
 const Home = () => {
   return (
-    <>
-      <Navigation>
-        <NavigationLogoWrapper to="/">
-          <h1>
-            <NavigationLogo
-              src="/assets/argentBankLogo.png"
-              alt="Argent Bank Logo"
-            />
-          </h1>
-        </NavigationLogoWrapper>
-        <div>
-          <NavigationItemWrapper to="/login">
-            <i className="fa fa-user-circle"></i> Sign In
-          </NavigationItemWrapper>
-        </div>
-      </Navigation>
-      <Main>
-        <BankDescriptionWrapper>
-          <BankDescriptionContent>
-            <HomePageSectionTitle>Promoted Content</HomePageSectionTitle>
-            <BankDesciptionSubtitle>No fees.</BankDesciptionSubtitle>
-            <BankDesciptionSubtitle>No minimum deposit.</BankDesciptionSubtitle>
-            <BankDesciptionSubtitle>
-              High interest rates.
-            </BankDesciptionSubtitle>
-            <BankDescriptionText>
-              Open a savings account with Argent Bank today !
-            </BankDescriptionText>
-          </BankDescriptionContent>
-        </BankDescriptionWrapper>
-        <FeaturesWrapper>
-          <HomePageSectionTitle>Features</HomePageSectionTitle>
-          <FeaturesItemWrapper>
-            <FeaturesIcon src="/assets/icon-chat.png" alt="Chat Icon" />
-            <FeaturesItemTitle>You are our #1 priority</FeaturesItemTitle>
-            <p>
-              Need to talk to a representative? You can get in touch through our
-              24/7 chat or through a phone call in less than 5 minutes.
-            </p>
-          </FeaturesItemWrapper>
-          <FeaturesItemWrapper>
-            <FeaturesIcon src="/assets/icon-money.png" alt="Chat Icon" />
-            <FeaturesItemTitle>
-              More savings means higher rates
-            </FeaturesItemTitle>
-            <p>
-              The more you save with us, the higher your interest rate will be !
-            </p>
-          </FeaturesItemWrapper>
-          <FeaturesItemWrapper>
-            <FeaturesIcon src="/assets/icon-security.png" alt="Chat Icon" />
-            <FeaturesItemTitle>Security you can trust</FeaturesItemTitle>
-            <p>
-              We use top of the line encryption to make sure your data and money
-              is always safe.
-            </p>
-          </FeaturesItemWrapper>
-        </FeaturesWrapper>
-      </Main>
-      <Footer>
-        <FooterText>Copyright 2020 Argent Bank</FooterText>
-      </Footer>
-    </>
+    <Main>
+      <BankDescriptionWrapper>
+        <BankDescriptionContent>
+          <HomePageSectionTitle>Promoted Content</HomePageSectionTitle>
+          <BankDesciptionSubtitle>No fees.</BankDesciptionSubtitle>
+          <BankDesciptionSubtitle>No minimum deposit.</BankDesciptionSubtitle>
+          <BankDesciptionSubtitle>High interest rates.</BankDesciptionSubtitle>
+          <BankDescriptionText>
+            Open a savings account with Argent Bank today !
+          </BankDescriptionText>
+        </BankDescriptionContent>
+      </BankDescriptionWrapper>
+      <FeaturesWrapper>
+        <HomePageSectionTitle>Features</HomePageSectionTitle>
+        <FeaturesItemWrapper>
+          <FeaturesIcon src="/assets/icon-chat.png" alt="Chat Icon" />
+          <FeaturesItemTitle>You are our #1 priority</FeaturesItemTitle>
+          <p>
+            Need to talk to a representative? You can get in touch through our
+            24/7 chat or through a phone call in less than 5 minutes.
+          </p>
+        </FeaturesItemWrapper>
+        <FeaturesItemWrapper>
+          <FeaturesIcon src="/assets/icon-money.png" alt="Chat Icon" />
+          <FeaturesItemTitle>More savings means higher rates</FeaturesItemTitle>
+          <p>
+            The more you save with us, the higher your interest rate will be !
+          </p>
+        </FeaturesItemWrapper>
+        <FeaturesItemWrapper>
+          <FeaturesIcon src="/assets/icon-security.png" alt="Chat Icon" />
+          <FeaturesItemTitle>Security you can trust</FeaturesItemTitle>
+          <p>
+            We use top of the line encryption to make sure your data and money
+            is always safe.
+          </p>
+        </FeaturesItemWrapper>
+      </FeaturesWrapper>
+    </Main>
   );
 };
 
