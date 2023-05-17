@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Icon from '../../Icon';
+import LinkNavigation from '../Link';
 
 const Navigation = styled.nav`
   display: flex;
@@ -13,22 +14,13 @@ const NavigationLogoWrapper = styled(Link)`
   display: flex;
   align-items: center;
   font-weight: bold;
-  color: #2c3e50;
+  /* color: #2c3e50; */
   text-decoration: none;
 `;
 
 const NavigationLogo = styled.img`
   max-width: 100%;
   width: 200px;
-`;
-
-const NavigationItemWrapper = styled(Link)`
-  text-decoration: none;
-  margin-right: 0.5rem;
-  color: #00bc77;
-  &:hover {
-    text-decoration: underline;
-  }
 `;
 
 const Header = ({ login }) => {
@@ -45,17 +37,32 @@ const Header = ({ login }) => {
         </NavigationLogoWrapper>
         <div>
           {login === 'false' ? (
-            <NavigationItemWrapper to="/login">
+            <LinkNavigation
+              to="/login"
+              margin="0.5rem"
+              color="#00bc77"
+              textDecoration="underline"
+            >
               <Icon /> Sign In
-            </NavigationItemWrapper>
+            </LinkNavigation>
           ) : (
             <>
-              <NavigationItemWrapper to="/users/:id">
+              <LinkNavigation
+                to="/users/:id"
+                margin="0.5rem"
+                color="#00bc77"
+                textDecoration="underline"
+              >
                 <Icon /> Tony
-              </NavigationItemWrapper>
-              <NavigationItemWrapper to="/">
+              </LinkNavigation>
+              <LinkNavigation
+                to="/"
+                margin="0.5rem"
+                color="#00bc77"
+                textDecoration="underline"
+              >
                 <Icon /> Sign Out
-              </NavigationItemWrapper>
+              </LinkNavigation>
             </>
           )}
         </div>

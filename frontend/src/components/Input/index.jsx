@@ -19,7 +19,7 @@ const InputStyled = styled.input`
 const Input = ({ labelfor, type, id, text }) => {
   return (
     <InputWrapper>
-      <InputLabel for={labelfor}>{text}</InputLabel>
+      <InputLabel htmlFor={labelfor}>{text}</InputLabel>
       <InputStyled type={type} id={id} />
     </InputWrapper>
   );
