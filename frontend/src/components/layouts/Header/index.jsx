@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Icon from '../../Icon';
 
 const Navigation = styled.nav`
   display: flex;
@@ -45,15 +46,15 @@ const Header = ({ login }) => {
         <div>
           {login === 'false' ? (
             <NavigationItemWrapper to="/login">
-              <i className="fa fa-user-circle"></i> Sign In
+              <Icon /> Sign In
             </NavigationItemWrapper>
           ) : (
             <>
               <NavigationItemWrapper to="/users/:id">
-                <i className="fa fa-user-circle"></i> Tony
+                <Icon /> Tony
               </NavigationItemWrapper>
               <NavigationItemWrapper to="/">
-                <i className="fa fa-user-circle"></i> Sign Out
+                <Icon /> Sign Out
               </NavigationItemWrapper>
             </>
           )}
