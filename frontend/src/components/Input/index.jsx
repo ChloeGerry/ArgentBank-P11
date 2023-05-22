@@ -1,20 +1,4 @@
-import styled from 'styled-components';
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-bottom: 1rem;
-`;
-
-const InputLabel = styled.label`
-  font-weight: bold;
-`;
-
-const InputStyled = styled.input`
-  padding: 5px;
-  font-size: 1.2rem;
-`;
+import { InputLabel, InputWrapper, InputStyled } from './input';
 
 const Input = ({ labelfor, type, id, text }) => {
   return (

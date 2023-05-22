@@ -1,19 +1,9 @@
 import Header from '../../components/layouts/Header';
-import styled from 'styled-components';
 import Title from '../../components/Title';
 import Button from '../../components/Button';
 import Account from '../../components/Account';
 import LinkNavigation from '../../components/layouts/Link';
-
-const Main = styled.main`
-  flex: 1;
-  background-color: #12002b;
-`;
-
-const MainHeader = styled.div`
-  color: #fff;
-  margin-bottom: 2rem;
-`;
+import { Main, MainHeader } from './user';
 
 const User = () => {
   return (

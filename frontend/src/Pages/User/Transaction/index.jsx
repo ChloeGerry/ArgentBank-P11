@@ -1,42 +1,15 @@
 import Header from '../../../components/layouts/Header';
 import Account from '../../../components/Account';
 import LinkNavigation from '../../../components/layouts/Link';
-import styled from 'styled-components';
 import Collapse from '../../../components/Collapse';
-
-const Main = styled.main`
-  flex: 1;
-  background-color: #12002b;
-`;
-
-const Icon = styled.i`
-  font-size: 56px;
-  color: #2c3e50;
-`;
-
-const CollapseWrapper = styled.section`
-  margin: 0 auto;
-  width: 80%;
-`;
-
-const CollapseHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 8px 24px;
-`;
-
-const CollapseTitleWrapper = styled.div`
-  display: flex;
-  width: 30%;
-  justify-content: space-between;
-`;
-
-const CollapseTitle = styled.span`
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #2c3e50;
-`;
+import {
+  Main,
+  Icon,
+  CollapseWrapper,
+  CollapseHeader,
+  CollapseTitleWrapper,
+  CollapseTitle,
+} from './transaction';
 
 const UserTransactions = () => {
   return (
@@ -66,11 +39,19 @@ const UserTransactions = () => {
             </CollapseTitleWrapper>
           </CollapseHeader>
           <Collapse
+            padding="16px 0px"
+            flexDirection="column"
+            margin="12px"
             date="27/02/20"
             description="Golden Sun Bakery"
             amount="$8.00"
             balance="$298.00"
-            text="coucou"
+            transactionType="Transaction type"
+            transactionTypeName="Electronic"
+            transactionCategory="Category"
+            transactionCategoryName="Food"
+            transactionNote="Note"
+            transactionNoteText="..."
           />
         </CollapseWrapper>
       </Main>

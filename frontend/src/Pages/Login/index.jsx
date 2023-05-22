@@ -1,35 +1,15 @@
-import styled from 'styled-components';
 import Header from '../../components/layouts/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Icon from '../../components/Icon';
 import LinkNavigation from '../../components/layouts/Link';
-
-const Main = styled.main`
-  flex: 1;
-  background-color: #12002b;
-`;
-
-const LoginWrapper = styled.section`
-  box-sizing: border-box;
-  background-color: white;
-  width: 300px;
-  margin: 0 auto;
-  margin-top: 3rem;
-  padding: 2rem;
-`;
-
-const LoginTitle = styled.h1`
-  margin: auto;
-`;
-
-const InputRememberWrapper = styled.div`
-  display: flex;
-`;
-
-const InputRememberLabel = styled.label`
-  margin-left: 0.25rem;
-`;
+import {
+  Main,
+  LoginWrapper,
+  LoginTitle,
+  InputRememberWrapper,
+  InputRememberLabel,
+} from './login';
 
 const Login = () => {
   return (

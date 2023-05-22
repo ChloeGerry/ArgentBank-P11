@@ -1,13 +1,4 @@
-import styled from 'styled-components';
-
-const IconStyled = styled.i`
-  box-sizing: ${(props) => props.boxSizing && props.boxSizing};
-  background-color: ${(props) =>
-    props.backgroundColor && props.backgroundColor};
-  margin: ${(props) => props.margin && props.margin};
-  padding: ${(props) => props.padding && props.padding};
-  font-size: ${(props) => props.fontSize && props.fontSize};
-`;
+import { IconStyled } from './icon';
 
 const Icon = ({ boxSizing, backgroundColor, margin, padding, fontSize }) => {
   return (
