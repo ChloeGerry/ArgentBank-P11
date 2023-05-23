@@ -20,7 +20,7 @@ const Header = ({ login }) => {
             <LinkNavigation
               to="/login"
               margin="0.5rem"
-              color="#00bc77"
+              color="#2c3e50"
               textDecoration="underline"
             >
               <Icon /> Sign In
@@ -28,9 +28,9 @@ const Header = ({ login }) => {
           ) : (
             <>
               <LinkNavigation
-                to="/users/:id"
+                to="/profile/:id"
                 margin="0.5rem"
-                color="#00bc77"
+                color="#42b983"
                 textDecoration="underline"
               >
                 <Icon /> Tony
@@ -38,7 +38,7 @@ const Header = ({ login }) => {
               <LinkNavigation
                 to="/"
                 margin="0.5rem"
-                color="#00bc77"
+                color="#42b983"
                 textDecoration="underline"
               >
                 <Icon /> Sign Out

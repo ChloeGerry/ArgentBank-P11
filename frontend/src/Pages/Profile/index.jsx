@@ -3,11 +3,11 @@ import Title from '../../components/Title';
 import Button from '../../components/Button';
 import Account from '../../components/Account';
 import LinkNavigation from '../../components/layouts/Link';
-import { Main, MainHeader, Form, MainTitle } from './user';
+import { Main, MainHeader, Form, MainTitle } from './profile';
 import { useState } from 'react';
 import Input from '../../components/Input';
 
-const User = () => {
+const Profile = () => {
   const [isEditInfoVisible, setEditInfoVisible] = useState(false);
 
   return (
@@ -124,4 +124,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default Profile;

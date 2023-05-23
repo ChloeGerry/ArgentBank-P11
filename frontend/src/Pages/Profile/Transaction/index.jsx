@@ -11,7 +11,7 @@ import {
   CollapseTitle,
 } from './transaction';
 
-const UserTransactions = () => {
+const ProfileTransactions = () => {
   return (
     <>
       <Header />
@@ -59,4 +59,4 @@ const UserTransactions = () => {
   );
 };
 
-export default UserTransactions;
+export default ProfileTransactions;
