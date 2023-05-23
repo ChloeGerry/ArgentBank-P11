@@ -6,8 +6,9 @@ const Button = ({
   display,
   width,
   fontSize,
-  marginTop,
+  margin,
   mediaQuery,
+  onClick,
 }) => {
   return (
     <ButtonStyled
@@ -15,8 +16,9 @@ const Button = ({
       display={display}
       width={width}
       fontSize={fontSize}
-      marginTop={marginTop}
+      margin={margin}
       mediaQuery={mediaQuery}
+      onClick={onClick}
     >
       {text}
     </ButtonStyled>

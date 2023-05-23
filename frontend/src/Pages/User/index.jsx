@@ -3,22 +3,69 @@ import Title from '../../components/Title';
 import Button from '../../components/Button';
 import Account from '../../components/Account';
 import LinkNavigation from '../../components/layouts/Link';
-import { Main, MainHeader } from './user';
+import { Main, MainHeader, Form, MainTitle } from './user';
+import { useState } from 'react';
+import Input from '../../components/Input';
 
 const User = () => {
+  const [isEditInfoVisible, setEditInfoVisible] = useState(false);
+
   return (
     <>
       <Header login="true" />
       <Main>
         <MainHeader>
-          <h1>
-            Welcome back
-            <br />
-            Tony Jarvis!
-          </h1>
-          <LinkNavigation to="/users/:id/edit">
-            <Button padding="10px" text="Edit Name" />
-          </LinkNavigation>
+          {isEditInfoVisible ? (
+            <>
+              <MainTitle>Edit user info</MainTitle>
+              <Form>
+                <Input
+                  alignItems="center"
+                  margin="8px"
+                  htmlFor="username"
+                  type="text"
+                  id="username"
+                  text="User name :"
+                />
+                <Input
+                  alignItems="center"
+                  margin="8px"
+                  htmlFor="firstname"
+                  type="text"
+                  id="firstname"
+                  text="First name :"
+                />
+                <Input
+                  alignItems="center"
+                  margin="8px"
+                  htmlFor="lastname"
+                  type="text"
+                  id="lastname"
+                  text="Last name :"
+                />
+              </Form>
+              <Button text="Save" padding="8px 40px" margin="24px 8px 0 0" />
+              <Button
+                text="Cancel"
+                padding="8px 40px"
+                margin="24px 0 0 0"
+                onClick={() => setEditInfoVisible(!isEditInfoVisible)}
+              />
+            </>
+          ) : (
+            <>
+              <MainTitle>
+                Welcome back
+                <br />
+                Tony Jarvis !
+              </MainTitle>
+              <Button
+                onClick={() => setEditInfoVisible(!isEditInfoVisible)}
+                padding="10px"
+                text="Edit Name"
+              />
+            </>
+          )}
         </MainHeader>
         <Title title="Accounts" />
         <Account

@@ -27,12 +27,14 @@ const Login = () => {
           <LoginTitle>Sign In</LoginTitle>
           <form>
             <Input
+              flexDirection="column"
               htmlFor="username"
               type="text"
               id="username"
               text="Username"
             />
             <Input
+              flexDirection="column"
               htmlFor="password"
               type="password"
               id="password"
@@ -49,7 +51,7 @@ const Login = () => {
                 display="block"
                 width="100%"
                 fontSize="1.1rem"
-                marginTop="1rem"
+                margin="1rem 0 0 0"
                 text="Sign In"
               />
             </LinkNavigation>

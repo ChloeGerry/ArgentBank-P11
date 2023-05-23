@@ -29,7 +29,10 @@ const Collapse = ({
           <CollapseText>{balance}</CollapseText>
           <Icon
             className="fa-solid fa-chevron-down"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              console.log(isOpen);
+              return setIsOpen(!isOpen);
+            }}
           ></Icon>
         </CollapseItem>
       </CollapseWrapper>
