@@ -5,17 +5,7 @@ import AllRoutes from './AllRoutes';
 import Footer from './components/layouts/Footer';
 import './index.css';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './reducers';
-import { addUser, getUser } from './actions/user.action';
-
-const store = configureStore({
-  reducer: rootReducer,
-  devTools: true,
-});
-
-store.dispatch(addUser());
-store.dispatch(getUser());
+import { store } from './utils/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

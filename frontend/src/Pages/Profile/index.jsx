@@ -22,26 +22,26 @@ const Profile = () => {
                 <Input
                   alignItems="center"
                   margin="8px"
-                  htmlFor="username"
+                  htmlFor="userName"
                   type="text"
-                  id="username"
-                  text="User name :"
+                  id="userName"
+                  text="User Name :"
                 />
                 <Input
                   alignItems="center"
                   margin="8px"
-                  htmlFor="firstname"
+                  htmlFor="firstName"
                   type="text"
-                  id="firstname"
-                  text="First name :"
+                  id="firstName"
+                  text="First Name :"
                 />
                 <Input
                   alignItems="center"
                   margin="8px"
-                  htmlFor="lastname"
+                  htmlFor="lastName"
                   type="text"
-                  id="lastname"
-                  text="Last name :"
+                  id="lastName"
+                  text="Last Name :"
                 />
               </Form>
               <Button text="Save" padding="8px 40px" margin="24px 8px 0 0" />

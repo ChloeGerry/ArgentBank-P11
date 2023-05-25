@@ -9,6 +9,7 @@ const Button = ({
   margin,
   mediaQuery,
   onClick,
+  type,
 }) => {
   return (
     <ButtonStyled
@@ -19,6 +20,7 @@ const Button = ({
       margin={margin}
       mediaQuery={mediaQuery}
       onClick={onClick}
+      type={type}
     >
       {text}
     </ButtonStyled>
