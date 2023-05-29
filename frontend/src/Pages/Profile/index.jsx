@@ -6,9 +6,11 @@ import LinkNavigation from '../../components/layouts/Link';
 import { Main, MainHeader, Form, MainTitle } from './profile';
 import { useState } from 'react';
 import Input from '../../components/Input';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const [isEditInfoVisible, setEditInfoVisible] = useState(false);
+  const profile = useSelector((state) => state.profileReducer);
 
   return (
     <>
@@ -57,7 +59,7 @@ const Profile = () => {
               <MainTitle>
                 Welcome back
                 <br />
-                Tony Jarvis !
+                {profile?.data.firstName} {profile?.data.lastName}
               </MainTitle>
               <Button
                 onClick={() => setEditInfoVisible(!isEditInfoVisible)}

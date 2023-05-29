@@ -10,10 +10,10 @@ import {
   InputRememberWrapper,
   InputRememberLabel,
 } from './login';
-import { useRef, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUser } from '../../actions/user.action';
 import { getProfile } from '../../actions/profile.action';
+import { getUser } from '../../actions/user.action';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -23,61 +23,26 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [formState, setFormState] = useState({
-    email: {
-      value: '',
-      isValid: false,
-    },
-    password: {
-      value: '',
-      isValid: false,
-    },
-  });
+  useEffect(() => {
+    if (user.data) {
+      const token = user?.data.token;
+      dispatch(getProfile(token));
+    }
+    if (user.data && profile.data) {
+      navigate(`/profile/:${profile.data.id}`);
+      form.current.reset();
+    }
+  }, [dispatch, navigate, profile.data, user.data]);
 
-  const handleUsername = (e) => {
-    const updateFormState = {
-      ...formState,
-      email: {
-        value: e.target.value,
-        isValid: true,
-      },
-    };
-    setFormState(updateFormState);
-  };
-
-  const handlePassword = (e) => {
-    const updateFormState = {
-      ...formState,
-      password: {
-        value: e.target.value,
-        isValid: true,
-      },
-    };
-    setFormState(updateFormState);
-  };
-
-  const handleForm = async (e) => {
-    e.preventDefault();
+  const handleForm = (event) => {
+    event.preventDefault();
 
     const formData = {
-      email: formState.email.value,
-      password: formState.password.value,
+      email: event.target[0].value,
+      password: event.target[1].value,
     };
 
-    if (
-      formState.email.isValid &&
-      formState.password.isValid &&
-      formState.email.value !== '' &&
-      formState.password.value !== ''
-    ) {
-      await dispatch(getUser(formData));
-      const token = user?.body.token;
-      await dispatch(getProfile(token));
-      navigate(`/profile/:${profile.body.id}`);
-      form.current.reset();
-    } else {
-      console.log('Veuillez remplir tous les chammps');
-    }
+    dispatch(getUser(formData));
   };
 
   return (
@@ -100,8 +65,6 @@ const Login = () => {
               type="email"
               id="email"
               text="Email"
-              value={formState.email.value}
-              onChange={handleUsername}
             />
             <Input
               flexDirection="column"
@@ -109,8 +72,6 @@ const Login = () => {
               type="password"
               id="password"
               text="Password"
-              value={formState.password.value}
-              onChange={handlePassword}
             />
             <InputRememberWrapper>
               <input type="checkbox" id="remember-me" />

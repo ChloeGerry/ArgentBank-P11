@@ -2,8 +2,14 @@ import { Link } from 'react-router-dom';
 import Icon from '../../Icon';
 import LinkNavigation from '../Link';
 import { Navigation, NavigationLogo } from './header';
+import { useSelector, useDispatch } from 'react-redux';
+import Loader from '../../Loader';
+import { logout } from '../../../actions/user.action';
 
 const Header = ({ login }) => {
+  const profile = useSelector((state) => state.profileReducer);
+  const dispatch = useDispatch();
+
   return (
     <header>
       <Navigation>
@@ -28,15 +34,17 @@ const Header = ({ login }) => {
           ) : (
             <>
               <LinkNavigation
-                to="/profile/:id"
+                to={`/profile/:${profile.data.id}`}
                 margin="0.5rem"
                 color="#42b983"
                 textDecoration="underline"
               >
-                <Icon /> Tony
+                <Icon /> {profile?.data.firstName}
+                {/* {profile.isLoading ? <Loader /> : profile?.data.firstName} */}
               </LinkNavigation>
               <LinkNavigation
                 to="/"
+                onClick={() => dispatch(logout())}
                 margin="0.5rem"
                 color="#42b983"
                 textDecoration="underline"
