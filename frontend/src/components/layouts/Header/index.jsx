@@ -39,7 +39,7 @@ const Header = ({ login }) => {
                 color="#42b983"
                 textDecoration="underline"
               >
-                <Icon />
+                <Icon />{' '}
                 {profile.isLoading ? <Loader /> : profile?.data.firstName}
               </LinkNavigation>
               <LinkNavigation

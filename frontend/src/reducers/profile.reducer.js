@@ -1,6 +1,7 @@
 import {
   GET_PROFILE_FETCHING,
   GET_PROFILE_RESOLVED,
+  EDIT_PROFILE,
 } from '../actions/profile.action';
 import { LOG_OUT } from '../actions/user.action';
 
@@ -17,6 +18,8 @@ export default function profileReducer(state = initialState, action) {
       return { ...state, data: action.payload, isLoading: false };
     case LOG_OUT:
       return { ...state, data: null, isLoading: false };
+    case EDIT_PROFILE:
+      return { ...state, data: action.payload, isLoading: false };
     default:
       return state;
   }

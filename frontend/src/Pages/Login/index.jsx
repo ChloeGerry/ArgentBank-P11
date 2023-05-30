@@ -58,7 +58,7 @@ const Login = () => {
             fontSize="5rem"
           />
           <LoginTitle>Sign In</LoginTitle>
-          <form ref={form} onSubmit={(e) => handleForm(e)}>
+          <form ref={form} onSubmit={(event) => handleForm(event)}>
             <Input
               flexDirection="column"
               htmlFor="email"

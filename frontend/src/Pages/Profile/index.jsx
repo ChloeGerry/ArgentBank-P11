@@ -3,14 +3,37 @@ import Title from '../../components/Title';
 import Button from '../../components/Button';
 import Account from '../../components/Account';
 import LinkNavigation from '../../components/layouts/Link';
-import { Main, MainHeader, Form, MainTitle } from './profile';
-import { useState } from 'react';
+import { Main, MainHeader, Form, MainTitle, ThrowError } from './profile';
+import { useState, useRef } from 'react';
 import Input from '../../components/Input';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { editProfile } from '../../actions/profile.action';
 
 const Profile = () => {
   const [isEditInfoVisible, setEditInfoVisible] = useState(false);
   const profile = useSelector((state) => state.profileReducer);
+  const user = useSelector((state) => state.userReducer);
+  const form = useRef();
+  const dispatch = useDispatch();
+  const [isFormValid, setFormValid] = useState({
+    userName: '',
+  });
+
+  const handleForm = (event) => {
+    event.preventDefault();
+    const token = user.data.token;
+
+    const formData = {
+      userName: event.target[0].value,
+    };
+
+    setFormValid(formData.userName);
+
+    if (formData.userName !== '') {
+      dispatch(editProfile(token, formData));
+      form.current.reset();
+    }
+  };
 
   return (
     <>
@@ -20,7 +43,7 @@ const Profile = () => {
           {isEditInfoVisible ? (
             <>
               <MainTitle>Edit user info</MainTitle>
-              <Form>
+              <Form ref={form} onSubmit={(event) => handleForm(event)}>
                 <Input
                   alignItems="center"
                   margin="8px"
@@ -29,6 +52,9 @@ const Profile = () => {
                   id="userName"
                   text="User Name :"
                 />
+                {isFormValid === '' && (
+                  <ThrowError>You have to choose a proper user name</ThrowError>
+                )}
                 <Input
                   alignItems="center"
                   margin="8px"
@@ -45,14 +71,21 @@ const Profile = () => {
                   id="lastName"
                   text="Last Name :"
                 />
+                <div>
+                  <Button
+                    type="submit"
+                    text="Save"
+                    padding="8px 40px"
+                    margin="24px 8px 0 0"
+                  />
+                  <Button
+                    text="Cancel"
+                    padding="8px 40px"
+                    margin="24px 0 0 0"
+                    onClick={() => setEditInfoVisible(!isEditInfoVisible)}
+                  />
+                </div>
               </Form>
-              <Button text="Save" padding="8px 40px" margin="24px 8px 0 0" />
-              <Button
-                text="Cancel"
-                padding="8px 40px"
-                margin="24px 0 0 0"
-                onClick={() => setEditInfoVisible(!isEditInfoVisible)}
-              />
             </>
           ) : (
             <>

@@ -19,3 +19,8 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
 `;
+
+export const ThrowError = styled.span`
+  margin: 0px 0px 16px 0px;
+  font-weight: bold;
+`;
