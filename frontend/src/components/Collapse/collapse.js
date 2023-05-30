@@ -22,6 +22,27 @@ export const CollapseText = styled.span`
   font-size: 1.1rem;
 `;
 
+export const FormWrapper = styled.div`
+  display: flex;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+`;
+
+export const CollapseInput = styled.input`
+  font-size: 1.1rem;
+`;
+
+export const CollapseLabel = styled.label`
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-left: 8px;
+`;
+
 export const Icon = styled.i`
   color: white;
   font-size: 1.2rem;

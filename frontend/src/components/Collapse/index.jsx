@@ -1,5 +1,14 @@
 import { useState } from 'react';
-import { CollapseItem, CollapseWrapper, CollapseText, Icon } from './collapse';
+import {
+  CollapseItem,
+  CollapseWrapper,
+  CollapseText,
+  Icon,
+  CollapseInput,
+  CollapseLabel,
+  FormWrapper,
+  Form,
+} from './collapse';
 
 const Collapse = ({
   padding,
@@ -15,8 +24,23 @@ const Collapse = ({
   transactionCategoryName,
   transactionNote,
   transactionNoteText,
+  onChangeCategory,
+  onChangeNote,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isTransactionCategoryOpen, setTransactionCategoryOpen] =
+    useState(false);
+  const [isTransactionNoteOpen, setTransactionNoteOpen] = useState(false);
+  const allCategories = ['Food', 'Rent', 'Hobbies'];
+
+  const changeCatagoryValue = (newValue) => {
+    onChangeCategory(newValue);
+  };
+
+  const changeNoteValue = (newValue) => {
+    onChangeNote(newValue);
+  };
+
   return (
     <>
       <CollapseWrapper>
@@ -29,9 +53,7 @@ const Collapse = ({
           <CollapseText>{balance}</CollapseText>
           <Icon
             className="fa-solid fa-chevron-down"
-            onClick={() => {
-              return setIsOpen(!isOpen);
-            }}
+            onClick={() => setIsOpen(!isOpen)}
           ></Icon>
         </CollapseItem>
       </CollapseWrapper>
@@ -43,17 +65,78 @@ const Collapse = ({
           </CollapseItem>
           <CollapseItem>
             <CollapseText>{transactionCategory}</CollapseText>
-            <CollapseText>
-              {transactionCategoryName}
-              <Icon className="fa-solid fa-pencil" margin={margin}></Icon>
-            </CollapseText>
+            <FormWrapper>
+              {isTransactionCategoryOpen ? (
+                <>
+                  <Form>
+                    {allCategories.map((category) => {
+                      return (
+                        <div key={category}>
+                          <input
+                            onClick={() => changeCatagoryValue(category)}
+                            id={category}
+                            type="checkbox"
+                            value={category}
+                          />
+                          <CollapseLabel htmlFor={category}>
+                            {category}
+                          </CollapseLabel>
+                        </div>
+                      );
+                    })}
+                  </Form>
+                  <Icon
+                    className="fa-solid fa-check"
+                    margin={margin}
+                    onClick={() =>
+                      setTransactionCategoryOpen(!isTransactionCategoryOpen)
+                    }
+                  />
+                </>
+              ) : (
+                <CollapseText>
+                  {transactionCategoryName}
+                  <Icon
+                    className="fa-solid fa-pencil"
+                    margin={margin}
+                    onClick={() =>
+                      setTransactionCategoryOpen(!isTransactionCategoryOpen)
+                    }
+                  />
+                </CollapseText>
+              )}
+            </FormWrapper>
           </CollapseItem>
           <CollapseItem>
             <CollapseText>{transactionNote}</CollapseText>
-            <CollapseText>
-              {transactionNoteText}
-              <Icon className="fa-solid fa-pencil" margin={margin}></Icon>
-            </CollapseText>
+            <div>
+              {isTransactionNoteOpen ? (
+                <>
+                  <CollapseInput
+                    onChange={(e) => changeNoteValue(e.target.value)}
+                    type="text"
+                  />
+                  <Icon
+                    className="fa-solid fa-check"
+                    margin={margin}
+                    onClick={() =>
+                      setTransactionNoteOpen(!isTransactionNoteOpen)
+                    }
+                  />
+                </>
+              ) : (
+                <CollapseText>
+                  {transactionNoteText}
+                  <Icon
+                    className="fa-solid fa-pencil"
+                    margin={margin}
+                    onClick={() =>
+                      setTransactionNoteOpen(!isTransactionNoteOpen)
+                    }
+                  />
+                </CollapseText>
+              )}
+            </div>
           </CollapseItem>
         </CollapseWrapper>
       )}

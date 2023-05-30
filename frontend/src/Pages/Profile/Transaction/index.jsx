@@ -12,11 +12,22 @@ import {
 } from './transaction';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const ProfileTransactions = () => {
   const profile = useSelector((state) => state.profileReducer);
   const userIds = useParams();
   const accountId = userIds.account.replace(/:/g, '');
+  const [category, setCategory] = useState('Food');
+  const [note, setNote] = useState('...');
+
+  const changeCategory = (category) => {
+    setCategory(category);
+  };
+
+  const changeNote = (note) => {
+    setNote(note);
+  };
 
   return (
     <>
@@ -68,9 +79,11 @@ const ProfileTransactions = () => {
             transactionType="Transaction type"
             transactionTypeName="Electronic"
             transactionCategory="Category"
-            transactionCategoryName="Food"
+            transactionCategoryName={category}
             transactionNote="Note"
-            transactionNoteText="..."
+            transactionNoteText={note}
+            onChangeCategory={changeCategory}
+            onChangeNote={changeNote}
           />
         </CollapseWrapper>
       </Main>
