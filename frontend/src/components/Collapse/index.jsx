@@ -30,7 +30,6 @@ const Collapse = ({
           <Icon
             className="fa-solid fa-chevron-down"
             onClick={() => {
-              console.log(isOpen);
               return setIsOpen(!isOpen);
             }}
           ></Icon>

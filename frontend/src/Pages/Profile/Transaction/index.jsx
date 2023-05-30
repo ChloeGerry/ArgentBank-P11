@@ -10,22 +10,41 @@ import {
   CollapseTitleWrapper,
   CollapseTitle,
 } from './transaction';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const ProfileTransactions = () => {
+  const profile = useSelector((state) => state.profileReducer);
+  const userIds = useParams();
+  const accountId = userIds.account.replace(/:/g, '');
+
   return (
     <>
       <Header />
       <Main>
-        <Account
-          title="Argent Bank Checking (x8349)"
-          amount="$2,082.79"
-          description="Available Balance"
-          button={
-            <LinkNavigation to="/users/:id">
-              <Icon className="fa-sharp fa-solid fa-x"></Icon>
-            </LinkNavigation>
-          }
-        />
+        {accountId === '8349' ? (
+          <Account
+            title={`Argent Bank Checking (x${accountId})`}
+            amount="$2,082.79"
+            description="Available Balance"
+            button={
+              <LinkNavigation to={`/profile/:${profile.data.id}`}>
+                <Icon className="fa-sharp fa-solid fa-x"></Icon>
+              </LinkNavigation>
+            }
+          />
+        ) : (
+          <Account
+            title={`Argent Bank Savings (x${accountId})`}
+            amount="$10,928.42"
+            description="Available Balance"
+            button={
+              <LinkNavigation to={`/profile/:${profile.data.id}`}>
+                <Icon className="fa-sharp fa-solid fa-x"></Icon>
+              </LinkNavigation>
+            }
+          />
+        )}
         <CollapseWrapper>
           <CollapseHeader>
             <CollapseTitleWrapper>

@@ -39,8 +39,8 @@ const Header = ({ login }) => {
                 color="#42b983"
                 textDecoration="underline"
               >
-                <Icon /> {profile?.data.firstName}
-                {/* {profile.isLoading ? <Loader /> : profile?.data.firstName} */}
+                <Icon />
+                {profile.isLoading ? <Loader /> : profile?.data.firstName}
               </LinkNavigation>
               <LinkNavigation
                 to="/"
