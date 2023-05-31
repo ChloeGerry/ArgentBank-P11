@@ -15,7 +15,7 @@ const Profile = () => {
   const user = useSelector((state) => state.userReducer);
   const form = useRef();
   const dispatch = useDispatch();
-  const [isFormValid, setFormValid] = useState({
+  const [error, setError] = useState({
     userName: '',
   });
 
@@ -27,12 +27,19 @@ const Profile = () => {
       userName: event.target[0].value,
     };
 
-    setFormValid(formData.userName);
-
-    if (formData.userName !== '') {
-      dispatch(editProfile(token, formData));
-      form.current.reset();
+    if (formData.userName === '') {
+      setError({
+        userName: 'You have to choose a user name',
+      });
+      return;
     }
+
+    dispatch(editProfile(token, formData));
+    form.current.reset();
+
+    setError({
+      userName: '',
+    });
   };
 
   return (
@@ -52,9 +59,7 @@ const Profile = () => {
                   id="userName"
                   text="User Name :"
                 />
-                {isFormValid === '' && (
-                  <ThrowError>You have to choose a proper user name</ThrowError>
-                )}
+                <ThrowError>{error.userName}</ThrowError>
                 <Input
                   alignItems="center"
                   margin="8px"
@@ -92,7 +97,7 @@ const Profile = () => {
               <MainTitle>
                 Welcome back
                 <br />
-                {profile?.data.firstName} {profile?.data.lastName}
+                {profile.data.firstName} {profile.data.lastName}
               </MainTitle>
               <Button
                 onClick={() => setEditInfoVisible(!isEditInfoVisible)}

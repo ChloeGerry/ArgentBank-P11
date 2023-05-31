@@ -25,3 +25,7 @@ export const InputRememberWrapper = styled.div`
 export const InputRememberLabel = styled.label`
   margin-left: 0.25rem;
 `;
+
+export const ThrowError = styled.span`
+  font-weight: bold;
+`;

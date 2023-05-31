@@ -3,7 +3,6 @@ import Icon from '../../Icon';
 import LinkNavigation from '../Link';
 import { Navigation, NavigationLogo } from './header';
 import { useSelector, useDispatch } from 'react-redux';
-import Loader from '../../Loader';
 import { logout } from '../../../actions/user.action';
 
 const Header = ({ login }) => {
@@ -39,9 +38,9 @@ const Header = ({ login }) => {
                 color="#42b983"
                 textDecoration="underline"
               >
-                <Icon />{' '}
-                {profile.isLoading ? <Loader /> : profile?.data.firstName}
+                <Icon /> {profile.data && profile.data.firstName}
               </LinkNavigation>
+
               <LinkNavigation
                 to="/"
                 onClick={() => dispatch(logout())}

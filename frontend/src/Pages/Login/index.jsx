@@ -9,8 +9,9 @@ import {
   LoginTitle,
   InputRememberWrapper,
   InputRememberLabel,
+  ThrowError,
 } from './login';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProfile } from '../../actions/profile.action';
 import { getUser } from '../../actions/user.action';
@@ -22,6 +23,10 @@ const Login = () => {
   const profile = useSelector((state) => state.profileReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [error, setError] = useState({
+    email: '',
+    password: '',
+  });
 
   useEffect(() => {
     if (user.data) {
@@ -42,7 +47,25 @@ const Login = () => {
       password: event.target[1].value,
     };
 
+    if (formData.email === '') {
+      setError({
+        email: 'You have to write an email',
+      });
+      return;
+    }
+
+    if (formData.password === '') {
+      setError({
+        password: 'You have to write a password',
+      });
+      return;
+    }
+
     dispatch(getUser(formData));
+    setError({
+      email: '',
+      password: '',
+    });
   };
 
   return (
@@ -66,6 +89,7 @@ const Login = () => {
               id="email"
               text="Email"
             />
+            <ThrowError>{error.email}</ThrowError>
             <Input
               flexDirection="column"
               htmlFor="password"
@@ -73,6 +97,7 @@ const Login = () => {
               id="password"
               text="Password"
             />
+            <ThrowError>{error.password}</ThrowError>
             <InputRememberWrapper>
               <input type="checkbox" id="remember-me" />
               <InputRememberLabel htmlFor="remember-me">
