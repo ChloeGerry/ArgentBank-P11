@@ -24,19 +24,3 @@ export const logout = () => {
     dispatch({ type: LOG_OUT });
   };
 };
-
-// export const ADD_USER = 'ADD_USER';
-// export const addUser = () => {
-//   return () => {};
-//   return (dispatch) => {
-//     return axios
-//       .post('http://localhost:3001/api/v1/user/signup')
-//       .then((result) => {
-//         console.log(result);
-//         dispatch({ type: ADD_USER, payload: result.data });
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
-// };

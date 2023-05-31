@@ -29,7 +29,7 @@ const Profile = () => {
 
     if (formData.userName === '') {
       setError({
-        userName: 'You have to choose a user name',
+        userName: 'You have to enter a user name',
       });
       return;
     }

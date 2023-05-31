@@ -49,14 +49,16 @@ const Login = () => {
 
     if (formData.email === '') {
       setError({
-        email: 'You have to write an email',
+        ...error,
+        email: 'You have to enter an email',
       });
       return;
     }
 
     if (formData.password === '') {
       setError({
-        password: 'You have to write a password',
+        ...error,
+        password: 'You have to enter a password',
       });
       return;
     }
