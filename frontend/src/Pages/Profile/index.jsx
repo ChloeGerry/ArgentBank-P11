@@ -114,7 +114,7 @@ const Profile = () => {
           description="Available Balance"
           button={
             <LinkNavigation
-              to={`/profile/:${profile.data.id}/transactions/:8349`}
+              to={`/profile/${profile.data.id}/transactions/8349`}
             >
               <Button
                 display="block"
@@ -133,7 +133,7 @@ const Profile = () => {
           description="Available Balance"
           button={
             <LinkNavigation
-              to={`/profile/:${profile.data.id}/transactions/:6712`}
+              to={`/profile/${profile.data.id}/transactions/6712`}
             >
               <Button
                 display="block"
@@ -147,12 +147,12 @@ const Profile = () => {
           }
         />
         <Account
-          title="Argent Bank Credit Card (x8349)"
+          title="Argent Bank Credit Card (x1725)"
           amount="$184.30"
           description="Current Balance"
           button={
             <LinkNavigation
-              to={`/profile/:${profile.data.id}/transactions/:8349`}
+              to={`/profile/${profile.data.id}/transactions/1725`}
             >
               <Button
                 display="block"

@@ -1,11 +1,19 @@
 import Header from '../../components/layouts/Header';
-import { Main } from './error';
+import { Main, LinkWrapper } from './error';
+import LinkNavigation from '../../components/layouts/Link';
 
 const Error = () => {
   return (
     <>
       <Header login="false" />
-      <Main>Cette page n'existe pas...</Main>
+      <Main>
+        Cette page n'existe pas...
+        <LinkWrapper>
+          <LinkNavigation to="/" color="#2c3e50">
+            Cliquez ici pour retourner sur la page d'accueil
+          </LinkNavigation>
+        </LinkWrapper>
+      </Main>
     </>
   );
 };

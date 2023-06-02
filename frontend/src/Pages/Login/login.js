@@ -10,7 +10,6 @@ export const LoginWrapper = styled.section`
   background-color: white;
   width: 300px;
   margin: 0 auto;
-  margin-top: 3rem;
   padding: 2rem;
 `;
 

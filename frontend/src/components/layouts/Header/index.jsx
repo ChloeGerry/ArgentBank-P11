@@ -33,7 +33,7 @@ const Header = ({ login }) => {
           ) : (
             <>
               <LinkNavigation
-                to={`/profile/:${profile.data.id}`}
+                to={`/profile/${profile.data.id}`}
                 margin="0.5rem"
                 color="#42b983"
                 textDecoration="underline"

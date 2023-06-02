@@ -23,10 +23,38 @@ const Login = () => {
   const profile = useSelector((state) => state.profileReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isUserRemembered, setUserRememebered] = useState(false);
+
   const [error, setError] = useState({
     email: '',
     password: '',
+    credentials: '',
   });
+
+  useEffect(() => {
+    const storageToken = localStorage.getItem('token');
+    const storageExpirationDate = localStorage.getItem('expirationDate');
+    const expirationDateExpired = new Date().getTime() > storageExpirationDate;
+
+    if (expirationDateExpired) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('expirationDate');
+    }
+    if (storageToken) {
+      dispatch(getProfile(storageToken));
+    }
+    if (profile.data && storageToken) {
+      navigate(`/profile/${profile.data.id}`);
+    }
+  }, [dispatch, navigate, profile.data]);
+
+  useEffect(() => {
+    if (isUserRemembered && user.data) {
+      const date = new Date().setHours(new Date().getHours() + 4);
+      localStorage.setItem('token', user.data.token);
+      localStorage.setItem('expirationDate', date);
+    }
+  }, [isUserRemembered, user.data]);
 
   useEffect(() => {
     if (user.data) {
@@ -34,10 +62,19 @@ const Login = () => {
       dispatch(getProfile(token));
     }
     if (user.data && profile.data) {
-      navigate(`/profile/:${profile.data.id}`);
+      navigate(`/profile/${profile.data.id}`);
       form.current.reset();
     }
-  }, [dispatch, navigate, profile.data, user.data]);
+  }, [dispatch, navigate, profile.data, user.data, user.profile]);
+
+  useEffect(() => {
+    if (user.hasAuthentificationFailed) {
+      setError({
+        ...error,
+        credentials: 'Your credentials are wrong',
+      });
+    }
+  }, [error.credentials, user.hasAuthentificationFailed, user.isLoading]);
 
   const handleForm = (event) => {
     event.preventDefault();
@@ -64,9 +101,11 @@ const Login = () => {
     }
 
     dispatch(getUser(formData));
+
     setError({
       email: '',
       password: '',
+      credentials: '',
     });
   };
 
@@ -91,6 +130,7 @@ const Login = () => {
               id="email"
               text="Email"
             />
+            <ThrowError>{error.credentials}</ThrowError>
             <ThrowError>{error.email}</ThrowError>
             <Input
               flexDirection="column"
@@ -101,7 +141,11 @@ const Login = () => {
             />
             <ThrowError>{error.password}</ThrowError>
             <InputRememberWrapper>
-              <input type="checkbox" id="remember-me" />
+              <input
+                type="checkbox"
+                id="remember-me"
+                onClick={() => setUserRememebered(!isUserRemembered)}
+              />
               <InputRememberLabel htmlFor="remember-me">
                 Remember me
               </InputRememberLabel>

@@ -75,7 +75,7 @@ const Collapse = ({
                           <input
                             onClick={() => changeCatagoryValue(category)}
                             id={category}
-                            type="checkbox"
+                            type="radio"
                             value={category}
                           />
                           <CollapseLabel htmlFor={category}>

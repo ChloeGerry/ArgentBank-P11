@@ -26,7 +26,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (profile.data) {
-      navigate(`/profile/:${profile.data._id}`);
+      navigate(`/profile/${profile.data._id}`);
       form.current.reset();
     }
   }, [navigate, profile.data]);

@@ -17,7 +17,7 @@ import { useState } from 'react';
 const ProfileTransactions = () => {
   const profile = useSelector((state) => state.profileReducer);
   const userIds = useParams();
-  const accountId = userIds.account.replace(/:/g, '');
+  const accountId = userIds.account;
   const [category, setCategory] = useState('Food');
   const [note, setNote] = useState('...');
 
@@ -39,18 +39,29 @@ const ProfileTransactions = () => {
             amount="$2,082.79"
             description="Available Balance"
             button={
-              <LinkNavigation to={`/profile/:${profile.data.id}`}>
+              <LinkNavigation to={`/profile/${profile.data.id}`}>
+                <Icon className="fa-sharp fa-solid fa-x"></Icon>
+              </LinkNavigation>
+            }
+          />
+        ) : accountId === '6712' ? (
+          <Account
+            title={`Argent Bank Savings (x${accountId})`}
+            amount="$10,928.42"
+            description="Available Balance"
+            button={
+              <LinkNavigation to={`/profile/${profile.data.id}`}>
                 <Icon className="fa-sharp fa-solid fa-x"></Icon>
               </LinkNavigation>
             }
           />
         ) : (
           <Account
-            title={`Argent Bank Savings (x${accountId})`}
-            amount="$10,928.42"
-            description="Available Balance"
+            title={`Argent Bank Credit Card (x${accountId})`}
+            amount="$184.30"
+            description="Current Balance"
             button={
-              <LinkNavigation to={`/profile/:${profile.data.id}`}>
+              <LinkNavigation to={`/profile/${profile.data.id}`}>
                 <Icon className="fa-sharp fa-solid fa-x"></Icon>
               </LinkNavigation>
             }
