@@ -114,7 +114,7 @@ const Profile = () => {
           description="Available Balance"
           button={
             <LinkNavigation
-              to={`/profile/${profile.data.id}/transactions/8349`}
+              to={`/profile/${profile.data.id}/account/8349/transactions`}
             >
               <Button
                 display="block"
@@ -133,7 +133,7 @@ const Profile = () => {
           description="Available Balance"
           button={
             <LinkNavigation
-              to={`/profile/${profile.data.id}/transactions/6712`}
+              to={`/profile/${profile.data.id}/account/6712/transactions`}
             >
               <Button
                 display="block"
@@ -152,7 +152,7 @@ const Profile = () => {
           description="Current Balance"
           button={
             <LinkNavigation
-              to={`/profile/${profile.data.id}/transactions/1725`}
+              to={`/profile/${profile.data.id}/account/1725/transactions`}
             >
               <Button
                 display="block"
