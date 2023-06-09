@@ -3,7 +3,7 @@ import Title from '../../components/Title';
 import Button from '../../components/Button';
 import Account from '../../components/Account';
 import LinkNavigation from '../../components/layouts/Link';
-import { Main, MainHeader, Form, MainTitle, ThrowError } from './profile';
+import { Main, MainHeader, Form, ThrowError } from './profile';
 import { useState, useRef } from 'react';
 import Input from '../../components/Input';
 import { useSelector, useDispatch } from 'react-redux';
@@ -49,7 +49,7 @@ const Profile = () => {
         <MainHeader>
           {isEditInfoVisible ? (
             <>
-              <MainTitle>Edit user info</MainTitle>
+              <h1>Edit user info</h1>
               <Form ref={form} onSubmit={(event) => handleForm(event)}>
                 <Input
                   alignItems="center"
@@ -94,11 +94,11 @@ const Profile = () => {
             </>
           ) : (
             <>
-              <MainTitle>
+              <h1>
                 Welcome back
                 <br />
                 {profile.data.firstName} {profile.data.lastName}
-              </MainTitle>
+              </h1>
               <Button
                 onClick={() => setEditInfoVisible(!isEditInfoVisible)}
                 padding="10px"

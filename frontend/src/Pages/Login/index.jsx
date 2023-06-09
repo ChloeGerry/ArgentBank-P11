@@ -50,7 +50,8 @@ const Login = () => {
 
   useEffect(() => {
     if (isUserRemembered && user.data) {
-      const date = new Date().setHours(new Date().getHours() + 4);
+      const FOUR_HOURS_MS = 1000 * 60 * 60 * 4;
+      const date = new Date().getTime() + FOUR_HOURS_MS;
       localStorage.setItem('token', user.data.token);
       localStorage.setItem('expirationDate', date);
     }

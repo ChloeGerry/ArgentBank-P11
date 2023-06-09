@@ -17,7 +17,7 @@ import { useState } from 'react';
 const ProfileTransactions = () => {
   const profile = useSelector((state) => state.profileReducer);
   const userIds = useParams();
-  const accountId = userIds.account;
+  const accountId = userIds.accountId;
   const [category, setCategory] = useState('Food');
   const [note, setNote] = useState('...');
 
