@@ -19,9 +19,14 @@ const Profile = () => {
     userName: '',
   });
 
+  console.log(user);
+
   const handleForm = (event) => {
     event.preventDefault();
-    const token = user.data.token;
+    let token;
+    user?.data
+      ? (token = user?.data.token)
+      : (token = localStorage.getItem('token'));
 
     const formData = {
       userName: event.target[0].value,
@@ -36,6 +41,7 @@ const Profile = () => {
 
     dispatch(editProfile(token, formData));
     form.current.reset();
+    setEditInfoVisible(false);
 
     setError({
       userName: '',
@@ -67,6 +73,7 @@ const Profile = () => {
                   type="text"
                   id="firstName"
                   text="First Name :"
+                  display="none"
                 />
                 <Input
                   alignItems="center"
@@ -75,6 +82,7 @@ const Profile = () => {
                   type="text"
                   id="lastName"
                   text="Last Name :"
+                  display="none"
                 />
                 <div>
                   <Button

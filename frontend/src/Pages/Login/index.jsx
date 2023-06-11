@@ -40,6 +40,7 @@ const Login = () => {
       localStorage.removeItem('token');
       localStorage.removeItem('expirationDate');
     }
+
     if (storageToken) {
       dispatch(getProfile(storageToken));
     }

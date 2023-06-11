@@ -7,12 +7,17 @@ const Input = ({
   text,
   flexDirection,
   alignItems,
+  display,
   margin,
   onChange,
   value,
 }) => {
   return (
-    <InputWrapper flexDirection={flexDirection} alignItems={alignItems}>
+    <InputWrapper
+      flexDirection={flexDirection}
+      alignItems={alignItems}
+      display={display}
+    >
       <InputLabel htmlFor={labelfor} margin={margin}>
         {text}
       </InputLabel>

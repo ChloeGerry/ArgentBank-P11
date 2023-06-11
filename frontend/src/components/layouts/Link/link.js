@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 
 export const LinkStyled = styled(Link)`
   text-decoration: none;
-  margin-right: ${(props) => props.margin && props.margin};
-  color: ${(props) => props.color && props.color};
+  margin-right: ${({ margin }) => margin && margin};
+  color: ${({ color }) => color && color};
   &:hover {
-    text-decoration: ${(props) => props.textDecoration && props.textDecoration};
+    text-decoration: ${({ textDecoration }) =>
+      textDecoration && textDecoration};
   }
 `;

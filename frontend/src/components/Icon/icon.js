@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const IconStyled = styled.i`
-  box-sizing: ${(props) => props.boxSizing && props.boxSizing};
-  background-color: ${(props) =>
-    props.backgroundColor && props.backgroundColor};
-  margin: ${(props) => props.margin && props.margin};
-  padding: ${(props) => props.padding && props.padding};
-  font-size: ${(props) => props.fontSize && props.fontSize};
+  box-sizing: ${({ boxSizing }) => boxSizing && boxSizing};
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor && backgroundColor};
+  margin: ${({ margin }) => margin && margin};
+  padding: ${({ padding }) => padding && padding};
+  font-size: ${({ fontSize }) => fontSize && fontSize};
 `;

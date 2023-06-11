@@ -2,15 +2,16 @@ import styled from 'styled-components';
 
 export const InputWrapper = styled.div`
   display: flex;
-  flex-direction: ${(props) => props.flexDirection && props.flexDirection};
-  align-items: ${(props) => props.alignItems && props.alignItems};
+  flex-direction: ${({ flexDirection }) => flexDirection && flexDirection};
+  align-items: ${({ alignItems }) => alignItems && alignItems};
   text-align: left;
   margin-bottom: 1rem;
+  display: ${({ display }) => display && display};
 `;
 
 export const InputLabel = styled.label`
   font-weight: bold;
-  margin-right: ${(props) => props.margin && props.margin};
+  margin-right: ${({ margin }) => margin && margin};
 `;
 
 export const InputStyled = styled.input`

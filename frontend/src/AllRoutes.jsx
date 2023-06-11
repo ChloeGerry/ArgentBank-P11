@@ -3,7 +3,7 @@ import Home from './Pages/Home';
 import Error from './Pages/Error';
 import Login from './Pages/Login';
 import Profile from './Pages/Profile';
-import ProfileTransactions from './Pages/Profile/Transaction';
+import ProfileTransactions from './Pages/Transaction';
 import SignUp from './Pages/Signup';
 
 const AllRoutes = () => {

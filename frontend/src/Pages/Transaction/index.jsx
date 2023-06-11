@@ -1,7 +1,7 @@
-import Header from '../../../components/layouts/Header';
-import Account from '../../../components/Account';
-import LinkNavigation from '../../../components/layouts/Link';
-import Collapse from '../../../components/Collapse';
+import Header from '../../components/layouts/Header';
+import Account from '../../components/Account';
+import LinkNavigation from '../../components/layouts/Link';
+import Collapse from '../../components/Collapse';
 import {
   Main,
   Icon,

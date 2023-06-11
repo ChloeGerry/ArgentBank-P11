@@ -47,5 +47,5 @@ export const Icon = styled.i`
   color: white;
   font-size: 1.2rem;
   cursor: pointer;
-  margin-left: ${(props) => props.margin && props.margin};
+  margin-left: ${({ margin }) => margin && margin};
 `;
