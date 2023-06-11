@@ -19,8 +19,6 @@ const Profile = () => {
     userName: '',
   });
 
-  console.log(user);
-
   const handleForm = (event) => {
     event.preventDefault();
     let token;

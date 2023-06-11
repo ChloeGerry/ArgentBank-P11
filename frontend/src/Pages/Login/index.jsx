@@ -70,13 +70,13 @@ const Login = () => {
   }, [dispatch, navigate, profile.data, user.data, user.profile]);
 
   useEffect(() => {
-    if (user.hasAuthentificationFailed) {
+    if (user.hasAuthenticationFailed) {
       setError({
         ...error,
         credentials: 'Your credentials are wrong',
       });
     }
-  }, [error.credentials, user.hasAuthentificationFailed, user.isLoading]);
+  }, [error.credentials, user.hasAuthenticationFailed, user.isLoading]);
 
   const handleForm = (event) => {
     event.preventDefault();

@@ -8,7 +8,7 @@ import {
 const initialState = {
   data: null,
   isLoading: false,
-  hasAuthentificationFailed: false,
+  hasAuthenticationFailed: false,
 };
 
 export default function userReducer(state = initialState, action) {
@@ -20,10 +20,10 @@ export default function userReducer(state = initialState, action) {
         ...state,
         data: action.payload,
         isLoading: false,
-        hasAuthentificationFailed: false,
+        hasAuthenticationFailed: false,
       };
     case GET_USER_REJECTED:
-      return { ...state, isLoading: false, hasAuthentificationFailed: true };
+      return { ...state, isLoading: false, hasAuthenticationFailed: true };
     case LOG_OUT:
       return { ...state, data: null, isLoading: false };
     default:
