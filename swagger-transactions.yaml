@@ -82,6 +82,20 @@ paths:
           description: The account's ID
           required: true
           type: integer
+        - name: category
+          in: header
+          description: The transaction's category
+          required: false
+          type: string
+          enum:
+            - Food
+            - Rent
+            - Hobbies
+        - name: date
+          in: header
+          description: The transaction's date
+          required: false
+          type: number
       responses:
         '200':
           description: User transactions retrieved successfully
@@ -94,7 +108,7 @@ paths:
                 description: The transaction's ID
               date:
                 type: string
-                example: new Date().toISOString()
+                example: '2023-06-12T14:22:29.387Z'
                 description: The transaction's date
               description:
                 type: string
@@ -136,6 +150,8 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: []
+        
+  /user/{userId}/account/{accountId}/transactions/{transactionId}:
     patch:
       tags:
         - Transactions Module
@@ -156,6 +172,11 @@ paths:
           description: The account's ID
           required: true
           type: integer
+        - name: transactionId
+          in: path
+          description: The transaction's ID
+          required: true
+          type: string
         - name: category
           in: header
           description: The transaction's category
@@ -182,7 +203,7 @@ paths:
                 description: The transaction's ID
               date:
                 type: integer
-                example: new Date().toISOString()
+                example: "2023-06-12T14:22:29.387Z"
                 description: The transaction's date
               description:
                 type: string
@@ -224,94 +245,7 @@ paths:
           description: Internal Server Error
       security:
         - ApiKeyAuth: []
-    post:
-      tags:
-        - Transactions Module
-      summary: Return a list of filtered transactions
-      description: API for transactions
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: userId
-          in: path
-          description: The user's ID
-          required: true
-          type: string
-        - name: accountId
-          in: path
-          description: The account's ID
-          required: true
-          type: integer
-        - name: category
-          in: header
-          description: The transaction's category
-          required: false
-          type: string
-          enum:
-            - Food
-            - Rent
-            - Hobbies
-        - name: date
-          in: header
-          description: The transaction's date
-          required: false
-          type: number
-      responses:
-        '200':
-          description: User transactions filtered successfully
-          schema:
-            type: object
-            properties:
-              id:
-                type: string
-                example: 6417252b768abc5544e0dc67
-                description: The transaction's ID
-              date:
-                type: integer
-                example: new Date().toISOString()
-                description: The transaction's date
-              description:
-                type: string
-                example: Golden Sun Bakery
-                description: The transaction's description
-              amout:
-                type: number
-                example: 8.25
-                description: The transaction's amount
-              balance:
-                type: number
-                example: 298.6
-                description: The transaction's balance
-              type:
-                type: string
-                enum:
-                  - Electronic
-                  - Pet
-                  - Car
-                example: Electronic
-                description: The transaction's type
-              category:
-                type: string
-                enum:
-                  - Food
-                  - Rent
-                  - Hobbies
-                example: Food
-                description: The transaction's category
-              note:
-                type: string
-                example: Kevin's birthday cake
-                description: The transaction's note
-        '400':
-          description: Bad request
-        '404':
-          description: Data not found
-        '500':
-          description: Internal Server Error
-      security:
-        - ApiKeyAuth: []
+  
 securityDefinitions:
   ApiKeyAuth:
     type: apiKey
