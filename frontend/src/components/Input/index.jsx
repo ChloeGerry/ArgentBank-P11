@@ -3,6 +3,7 @@ import { InputLabel, InputWrapper, InputStyled } from './input';
 const Input = ({
   labelfor,
   type,
+  name,
   id,
   text,
   flexDirection,
@@ -21,7 +22,14 @@ const Input = ({
       <InputLabel htmlFor={labelfor} margin={margin}>
         {text}
       </InputLabel>
-      <InputStyled onChange={onChange} value={value} type={type} id={id} />
+      <InputStyled
+        autoComplete="off"
+        onChange={onChange}
+        value={value}
+        name={name}
+        type={type}
+        id={id}
+      />
     </InputWrapper>
   );
 };

@@ -128,6 +128,7 @@ const Login = () => {
             <Input
               flexDirection="column"
               htmlFor="email"
+              name="email"
               type="email"
               id="email"
               text="Email"
@@ -137,6 +138,7 @@ const Login = () => {
             <Input
               flexDirection="column"
               htmlFor="password"
+              name="password"
               type="password"
               id="password"
               text="Password"

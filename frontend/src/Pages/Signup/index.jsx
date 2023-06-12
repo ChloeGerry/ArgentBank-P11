@@ -109,6 +109,7 @@ const SignUp = () => {
             <Input
               flexDirection="column"
               htmlFor="email"
+              name="email"
               type="email"
               id="email"
               text="Email"
@@ -117,6 +118,7 @@ const SignUp = () => {
             <Input
               flexDirection="column"
               htmlFor="password"
+              name="password"
               type="password"
               id="password"
               text="Password"
@@ -125,6 +127,7 @@ const SignUp = () => {
             <Input
               flexDirection="column"
               htmlFor="firstName"
+              name="firstName"
               type="text"
               id="firstName"
               text="First Name"
@@ -133,6 +136,7 @@ const SignUp = () => {
             <Input
               flexDirection="column"
               htmlFor="lastName"
+              name="lastName"
               type="text"
               id="lastName"
               text="Last Name"
@@ -141,6 +145,7 @@ const SignUp = () => {
             <Input
               flexDirection="column"
               htmlFor="userName"
+              name="userName"
               type="text"
               id="userName"
               text="User Name"

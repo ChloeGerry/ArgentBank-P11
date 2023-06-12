@@ -5,8 +5,10 @@ export const Main = styled.main`
 `;
 
 export const BankDescriptionWrapper = styled.div`
-  background-image: url('/assets/bank-tree.jpeg');
+  background-image: url('/assets/bank-tree.jpg');
   background-position: 0 -50px;
+  max-width: 1440px;
+  margin: auto;
   background-size: cover;
   background-repeat: no-repeat;
   height: 300px;

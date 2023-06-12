@@ -1,0 +1,319 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Bank Argent API documentation
+  description: Contains all available API endpoints in this codebase
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /user/{userId}/accounts:
+    get:
+      tags:
+        - Transactions Module
+      summary: Return a list of accounts
+      description: API for transactions
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: The user's ID
+          required: true
+          type: string
+      responses:
+        '200':
+          description: User accounts retrieved successfully
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                example: 251519
+                description: The account's ID
+              type:
+                type: string
+                enum:
+                  - Checking
+                  - Savings
+                  - Credit Card
+                example: Checking
+                description: The account's type
+              amount:
+                type: number
+                example: 1370.45
+                description: The account's amount
+              balance:
+                type: string
+                enum:
+                  - Available Balance
+                  - Current Balance
+                example: Available Balance
+                description: The account's balance
+        '400':
+          description: Bad request
+        '404':
+          description: Data not found
+        '500':
+          description: Internal Server Error
+      security:
+        - ApiKeyAuth: []
+  /user/{userId}/account/{accountId}/transactions:
+    get:
+      tags:
+        - Transactions Module
+      summary: Return a list of transactions for the last 30 days
+      description: API for transactions
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: The user's ID
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: The account's ID
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: User transactions retrieved successfully
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                example: 6417252b768abc5544e0dc67
+                description: The transaction's ID
+              date:
+                type: string
+                example: new Date().toISOString()
+                description: The transaction's date
+              description:
+                type: string
+                example: Golden Sun Bakery
+                description: The transaction's description
+              amout:
+                type: number
+                example: 8.25
+                description: The transaction's amount
+              balance:
+                type: number
+                example: 298.6
+                description: The transaction's balance
+              type:
+                type: string
+                enum:
+                  - Electronic
+                  - Pet
+                  - Car
+                example: Electronic
+                description: The transaction's type
+              category:
+                type: string
+                enum:
+                  - Food
+                  - Rent
+                  - Hobbies
+                example: Food
+                description: The transaction's category
+              note:
+                type: string
+                example: Kevin's birthday cake
+                description: The transaction's note
+        '400':
+          description: Bad request
+        '404':
+          description: Data not found
+        '500':
+          description: Internal Server Error
+      security:
+        - ApiKeyAuth: []
+    patch:
+      tags:
+        - Transactions Module
+      summary: Return a transaction changed
+      description: API for transactions
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: The user's ID
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: The account's ID
+          required: true
+          type: integer
+        - name: category
+          in: header
+          description: The transaction's category
+          required: false
+          type: string
+          enum:
+            - Food
+            - Rent
+            - Hobbies
+        - name: note
+          in: header
+          description: The transaction's note
+          required: false
+          type: string
+      responses:
+        '200':
+          description: User transactions changed successfully
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                example: 6417252b768abc5544e0dc67
+                description: The transaction's ID
+              date:
+                type: integer
+                example: new Date().toISOString()
+                description: The transaction's date
+              description:
+                type: string
+                example: Golden Sun Bakery
+                description: The transaction's description
+              amout:
+                type: number
+                example: 8.25
+                description: The transaction's amount
+              balance:
+                type: number
+                example: 298.6
+                description: The transaction's balance
+              type:
+                type: string
+                enum:
+                  - Electronic
+                  - Pet
+                  - Car
+                example: Electronic
+                description: The transaction's type
+              category:
+                type: string
+                enum:
+                  - Food
+                  - Rent
+                  - Hobbies
+                example: Food
+                description: The transaction's category
+              note:
+                type: string
+                example: Kevin's birthday cake
+                description: The transaction's note
+        '400':
+          description: Bad request
+        '404':
+          description: Data not found
+        '500':
+          description: Internal Server Error
+      security:
+        - ApiKeyAuth: []
+    post:
+      tags:
+        - Transactions Module
+      summary: Return a list of filtered transactions
+      description: API for transactions
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: userId
+          in: path
+          description: The user's ID
+          required: true
+          type: string
+        - name: accountId
+          in: path
+          description: The account's ID
+          required: true
+          type: integer
+        - name: category
+          in: header
+          description: The transaction's category
+          required: false
+          type: string
+          enum:
+            - Food
+            - Rent
+            - Hobbies
+        - name: date
+          in: header
+          description: The transaction's date
+          required: false
+          type: number
+      responses:
+        '200':
+          description: User transactions filtered successfully
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                example: 6417252b768abc5544e0dc67
+                description: The transaction's ID
+              date:
+                type: integer
+                example: new Date().toISOString()
+                description: The transaction's date
+              description:
+                type: string
+                example: Golden Sun Bakery
+                description: The transaction's description
+              amout:
+                type: number
+                example: 8.25
+                description: The transaction's amount
+              balance:
+                type: number
+                example: 298.6
+                description: The transaction's balance
+              type:
+                type: string
+                enum:
+                  - Electronic
+                  - Pet
+                  - Car
+                example: Electronic
+                description: The transaction's type
+              category:
+                type: string
+                enum:
+                  - Food
+                  - Rent
+                  - Hobbies
+                example: Food
+                description: The transaction's category
+              note:
+                type: string
+                example: Kevin's birthday cake
+                description: The transaction's note
+        '400':
+          description: Bad request
+        '404':
+          description: Data not found
+        '500':
+          description: Internal Server Error
+      security:
+        - ApiKeyAuth: []
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key
