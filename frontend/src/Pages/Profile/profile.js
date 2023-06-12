@@ -17,7 +17,7 @@ export const Form = styled.form`
   align-items: center;
 `;
 
-export const ThrowError = styled.span`
+export const ThrowMessage = styled.span`
   margin: 0px 0px 16px 0px;
   font-weight: bold;
 `;

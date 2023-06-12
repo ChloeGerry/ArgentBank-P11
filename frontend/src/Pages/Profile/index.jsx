@@ -3,7 +3,7 @@ import Title from '../../components/Title';
 import Button from '../../components/Button';
 import Account from '../../components/Account';
 import LinkNavigation from '../../components/layouts/Link';
-import { Main, MainHeader, Form, ThrowError } from './profile';
+import { Main, MainHeader, Form, ThrowMessage } from './profile';
 import { useState, useRef } from 'react';
 import Input from '../../components/Input';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,9 +15,18 @@ const Profile = () => {
   const user = useSelector((state) => state.userReducer);
   const form = useRef();
   const dispatch = useDispatch();
-  const [error, setError] = useState({
+  const [message, setMessage] = useState({
     userName: '',
+    onSuccess: false,
   });
+
+  const resetMessages = () => {
+    setEditInfoVisible(!isEditInfoVisible);
+    setMessage({
+      userName: '',
+      onSuccess: false,
+    });
+  };
 
   const handleForm = (event) => {
     event.preventDefault();
@@ -31,7 +40,7 @@ const Profile = () => {
     };
 
     if (formData.userName === '') {
-      setError({
+      setMessage({
         userName: 'You have to enter a user name',
       });
       return;
@@ -39,12 +48,24 @@ const Profile = () => {
 
     dispatch(editProfile(token, formData));
     form.current.reset();
-    setEditInfoVisible(false);
 
-    setError({
-      userName: '',
-    });
+    if (formData.userName !== '') {
+      setMessage({
+        userName: 'User name successfully changed',
+        onSuccess: true,
+      });
+      return;
+    }
   };
+
+  message.onSuccess &&
+    setTimeout(() => {
+      setEditInfoVisible(!isEditInfoVisible);
+      setMessage({
+        userName: '',
+        onSuccess: false,
+      });
+    }, 1000);
 
   return (
     <>
@@ -64,7 +85,7 @@ const Profile = () => {
                   id="userName"
                   text="User Name :"
                 />
-                <ThrowError>{error.userName}</ThrowError>
+                <ThrowMessage>{message.userName}</ThrowMessage>
                 <Input
                   alignItems="center"
                   margin="8px"
@@ -96,7 +117,7 @@ const Profile = () => {
                     text="Cancel"
                     padding="8px 40px"
                     margin="24px 0 0 0"
-                    onClick={() => setEditInfoVisible(!isEditInfoVisible)}
+                    onClick={() => resetMessages()}
                   />
                 </div>
               </Form>
