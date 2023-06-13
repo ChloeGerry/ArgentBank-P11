@@ -95,7 +95,7 @@ paths:
           in: header
           description: The transaction's date
           required: false
-          type: number
+          type: string
       responses:
         '200':
           description: User transactions retrieved successfully
